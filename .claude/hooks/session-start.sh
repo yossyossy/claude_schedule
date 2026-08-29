@@ -75,9 +75,10 @@ if [ "${status}" = "failed" ]; then
   cat <<EOF
 私用コンテキストリポジトリ ai_memory を取得できませんでした。
 
-ai_memory は private のため、このセッションの git プロキシがまだ認可していない
-可能性が高いです。add_repo ツールで yossyossy/ai_memory をこのセッションに
-追加し、返ってきた clone コマンドを ${DEST} に対して実行してください。
+ai_memory は private です。クラウドセッションの git プロキシは、セッションに
+紐づいたリポジトリしか通しません。add_repo ツールで yossyossy/ai_memory を
+このセッションに追加し、${DEST} に clone してから、上のファイルを読んでください。
+add_repo はセッション開始時のスコープに縛られないため、そのまま実行できます。
 追加できない場合は、私用コンテキストなしで作業していることをユーザーに伝えてください。
 
 git の出力（末尾）: $(tail -n 2 "${log}" | tr '\n' ' ')
